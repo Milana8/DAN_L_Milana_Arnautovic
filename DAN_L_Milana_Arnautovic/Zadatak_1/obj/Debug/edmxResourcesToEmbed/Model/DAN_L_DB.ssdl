@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DAN_LModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tblSongs">
+    <Key>
+      <PropertyRef Name="SongID" />
+    </Key>
+    <Property Name="SongID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SongName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Author" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Duration" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+  </EntityType>
+  <EntityType Name="tblUsers">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Pasword" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DAN_L.dbo.vwSongs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwSongs">
+    <Key>
+      <PropertyRef Name="SongID" />
+      <PropertyRef Name="SongName" />
+      <PropertyRef Name="Author" />
+      <PropertyRef Name="Duration" />
+      <PropertyRef Name="Username" />
+      <PropertyRef Name="Pasword" />
+    </Key>
+    <Property Name="SongID" Type="int" Nullable="false" />
+    <Property Name="SongName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Author" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Duration" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Pasword" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__tblSongs__UserID__3A81B327">
+    <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="0..1" />
+    <End Role="tblSongs" Type="Self.tblSongs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="tblSongs">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DAN_LModelStoreContainer">
+    <EntitySet Name="tblSongs" EntityType="Self.tblSongs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblUsers" EntityType="Self.tblUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vwSongs" EntityType="Self.vwSongs" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vwSongs].[SongID] AS [SongID], 
+    [vwSongs].[SongName] AS [SongName], 
+    [vwSongs].[Author] AS [Author], 
+    [vwSongs].[Duration] AS [Duration], 
+    [vwSongs].[UserID] AS [UserID], 
+    [vwSongs].[Username] AS [Username], 
+    [vwSongs].[Pasword] AS [Pasword]
+    FROM [dbo].[vwSongs] AS [vwSongs]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__tblSongs__UserID__3A81B327" Association="Self.FK__tblSongs__UserID__3A81B327">
+      <End Role="tblUsers" EntitySet="tblUsers" />
+      <End Role="tblSongs" EntitySet="tblSongs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
