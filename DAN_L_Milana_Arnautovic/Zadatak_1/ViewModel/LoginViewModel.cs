@@ -117,7 +117,7 @@ namespace Zadatak_1.ViewModel
             try
             {
                 string pasword = (o as PasswordBox).Password;
-                if ( IsUniqueUsername(UserName) == true)
+                if (IsUniqueUsername(UserName) == true)
                 {
                     MainWindow mw = new MainWindow();
                     view.Close();

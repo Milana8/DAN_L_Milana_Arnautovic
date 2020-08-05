@@ -21,3 +21,5 @@ C:\Users\Korisnik\Desktop\DAN_L_Milana_Arnautovic\DAN_L_Milana_Arnautovic\Zadata
 C:\Users\Korisnik\Desktop\DAN_L_Milana_Arnautovic\DAN_L_Milana_Arnautovic\Zadatak_1\obj\Debug\Zadatak_1.csproj.CopyComplete
 C:\Users\Korisnik\Desktop\DAN_L_Milana_Arnautovic\DAN_L_Milana_Arnautovic\Zadatak_1\obj\Debug\Zadatak_1.exe
 C:\Users\Korisnik\Desktop\DAN_L_Milana_Arnautovic\DAN_L_Milana_Arnautovic\Zadatak_1\obj\Debug\Zadatak_1.pdb
+C:\Users\Korisnik\Desktop\DAN_L_Milana_Arnautovic\DAN_L_Milana_Arnautovic\Zadatak_1\obj\Debug\View\AddSongView.g.cs
+C:\Users\Korisnik\Desktop\DAN_L_Milana_Arnautovic\DAN_L_Milana_Arnautovic\Zadatak_1\obj\Debug\View\AddSongView.baml
