@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DAN_LModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tblSong">
+    <Key>
+      <PropertyRef Name="SongID" />
+    </Key>
+    <Property Name="SongID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SongName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Author" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Duration" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserID" Type="Int32" />
+    <NavigationProperty Name="tblUser" Relationship="Self.FK__tblSongs__UserID__3A81B327" FromRole="tblSongs" ToRole="tblUsers" />
+  </EntityType>
+  <EntityType Name="tblUser">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Pasword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tblSongs" Relationship="Self.FK__tblSongs__UserID__3A81B327" FromRole="tblUsers" ToRole="tblSongs" />
+  </EntityType>
+  <EntityType Name="vwSong">
+    <Key>
+      <PropertyRef Name="SongID" />
+      <PropertyRef Name="SongName" />
+      <PropertyRef Name="Author" />
+      <PropertyRef Name="Duration" />
+      <PropertyRef Name="Username" />
+      <PropertyRef Name="Pasword" />
+    </Key>
+    <Property Name="SongID" Type="Int32" Nullable="false" />
+    <Property Name="SongName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Author" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Duration" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Pasword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__tblSongs__UserID__3A81B327">
+    <End Role="tblUsers" Type="Self.tblUser" Multiplicity="0..1" />
+    <End Role="tblSongs" Type="Self.tblSong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="tblSongs">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DAN_LEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tblSongs" EntityType="Self.tblSong" />
+    <EntitySet Name="tblUsers" EntityType="Self.tblUser" />
+    <EntitySet Name="vwSongs" EntityType="Self.vwSong" />
+    <AssociationSet Name="FK__tblSongs__UserID__3A81B327" Association="Self.FK__tblSongs__UserID__3A81B327">
+      <End Role="tblUsers" EntitySet="tblUsers" />
+      <End Role="tblSongs" EntitySet="tblSongs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

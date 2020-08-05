@@ -64,17 +64,36 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="DAN_L_DB.Context.cs">
+    <Compile Include="Model\DAN_L_DB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DAN_L_DB.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="DAN_L_DB.Designer.cs">
+    <Compile Include="Model\DAN_L_DB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DAN_L_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DAN_L_DB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DAN_L_DB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\tblSong.cs">
+      <DependentUpon>DAN_L_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\tblUser.cs">
+      <DependentUpon>DAN_L_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service.cs" />
+    <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="Model\vwSong.cs">
+      <DependentUpon>DAN_L_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="View\LoginView.xaml.cs">
+      <DependentUpon>LoginView.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -88,6 +107,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -107,11 +130,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="DAN_L_DB.edmx">
+    <EntityDeploy Include="Model\DAN_L_DB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DAN_L_DB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="DAN_L_DB.edmx.diagram">
+    <None Include="Model\DAN_L_DB.edmx.diagram">
       <DependentUpon>DAN_L_DB.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
@@ -123,14 +146,17 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Model\" />
-    <Folder Include="View\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="DAN_L_DB.Context.tt">
+    <Content Include="Model\DAN_L_DB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>DAN_L_DB.Context.cs</LastGenOutput>
+      <DependentUpon>DAN_L_DB.edmx</DependentUpon>
+    </Content>
+    <Content Include="Model\DAN_L_DB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DAN_L_DB.edmx</DependentUpon>
+      <LastGenOutput>DAN_L_DB.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
